@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовое задание для фронтендера</title>
+    <style>
+        .body {
+            margin: 40px 10px;
+            background: #EDECE9;
+            font-family: SFMono-Regular, Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+        }
+        a {
+            color: rgb(55, 53, 47);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="body">
+    <ul class="list"></ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const list = document.querySelector('.list');
+
+            const request = new XMLHttpRequest();
+            request.open('GET', 'https://api.npoint.io/91aac50b791c7d1d27a5');
+            request.send();
+
+            request.onload = function() {
+                const data = JSON.parse(request.response);
+                for (let i = 0; i < data.length; i++) {
+                    const li = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.innerHTML = `<a href="./single.html?s=${data[i]}">${data[i]}</a>`;
+                    const star = document.createElement('span');
+                    star.textContent = '*';
+
+                    li.append(star);
+                    li.append(link);
+                    list.append(li);
+
+                    li.classList.add('li');
+                    li.style.cssText = 'list-style-type: none; line-height: 1.5; cursor: pointer;';
+                    
+                    star.classList.add('star');
+                    star.style.cssText = 'color: #9a6e3a; margin-right: 6px;';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

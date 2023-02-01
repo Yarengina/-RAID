@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>single</title>
+    <style>
+        .body {
+            margin: 40px;
+            background: #EDECE9;
+            color: rgb(55, 53, 47);
+            font-family: SFMono-Regular, Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+        }
+        .color {
+            color: hsl(350, 40%, 70%);
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="container">
+        <span>This</span>
+        <span class="color">is</span>
+        <span>page</span>
+        <span class="color">for</span>
+    </div>
+    <script>
+        const body = document.querySelector('.body');
+        const result = window.location.search.replace( '?', '').split('=')[1];
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.container');
+            const text = document.createElement('span');
+            text.textContent = `${result}`;
+            container.append(text);
+        });
+    </script>
+</body>
+</html>
